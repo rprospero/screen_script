@@ -45,4 +45,3 @@ with open(argv[1], "w") as outfile:
                 on_press=on_presser(outfile),
                 on_release=on_releaser(outfile, listener)) as klistener:
             klistener.join()
-            listener.join()
