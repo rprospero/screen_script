@@ -2,6 +2,7 @@
 
 import numpy as np
 from pynput import mouse, keyboard
+import pyscreenshot
 from sys import argv
 from time import sleep
 
@@ -68,6 +69,7 @@ with open(argv[1], "r") as infile:
     commands = [d.split("@")[0]
                 for d in data]
 
-    for (c, d) in zip(commands, deltas):
+    for (idx, (c, d)) in enumerate(zip(commands, deltas)):
         sleep(d)
         run_command(c)
+        pyscreenshot.grab_to_file("step{:03}.png".format(idx))
